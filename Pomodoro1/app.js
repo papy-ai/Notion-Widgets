@@ -3,12 +3,9 @@ let timeLeft = 0; // Default to 0 seconds (on bosse ?)
 let isPaused = false; // Track pause state
 
 // Load audio files
-const alarmSound = new Audio('alarm.mp3');
-const start5minSound = new Audio('FinPause.mp3');
-const start25minSound = new Audio('FinPause.mp3');
-const pauseSound = new Audio('Pause.mp3');
-const endBreakSound = new Audio('FinPause.mp3');
-const endWorkSound = new Audio('FinTravail.mp3');
+const alarmSound = new Audio('Alarm.mp3');
+const clockSound = new Audio('Clock.mp3');
+const startSound = new Audio('Start.mp3');
 
 function updateTimerDisplay() {
   const timerElement = document.getElementById('timer');
@@ -29,12 +26,8 @@ function startSession(minutes) {
     pauseButton.textContent = "Pause"; // Reset pause button
   }
 
-  // Play appropriate sound
-  if (minutes === 25) {
-    start25minSound.play();
-  } else if (minutes === 5) {
-    start5minSound.play();
-  }
+  // Play start sound
+  startSound.play();
 
   updateTimerDisplay();
   startTimer();
@@ -56,14 +49,12 @@ function startTimer() {
       }
 
       // Play end sound based on session type
-      if (timeLeft === 0) {
-        if (document.getElementById('timer').textContent.includes('25')) {
-          endWorkSound.play();
-        } else if (document.getElementById('timer').textContent.includes('5')) {
-          endBreakSound.play();
-        }
+      const currentDisplay = document.getElementById('timer').textContent;
+      if (currentDisplay === "25:00" || timeLeft === 0) {
+        alarmSound.play(); // Pomodoro end
+      } else if (currentDisplay === "5:00" || timeLeft === 0) {
+        clockSound.play(); // Break end
       }
-      alert("Time is up! Great job!");
     }
   }, 1000);
 }
@@ -78,13 +69,12 @@ function togglePause() {
   if (isPaused) {
     // Resume timer
     isPaused = false;
-    start5minSound.play(); // Play start sound
+    startSound.play(); // Play start sound
     pauseButton.textContent = "Pause";
     startTimer();
   } else {
     // Pause timer
     isPaused = true;
-    pauseSound.play(); // Play pause sound
     pauseButton.textContent = "Reprendre";
     clearInterval(timerInterval);
     timerInterval = null;
