@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: "Comic Sans MS", sans-serif;
-    background: #f4e3ff;
+    background: transparent; /* Transparent background */
     color: #000;
     display: flex;
     justify-content: center;
