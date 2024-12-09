@@ -4,8 +4,8 @@ let isPaused = false; // Track pause state
 
 // Load audio files
 const alarmSound = new Audio('alarm.mp3');
-const start5minSound = new Audio('Start5min.mp3');
-const start25minSound = new Audio('Start25min.mp3');
+const start5minSound = new Audio('FinPause.mp3');
+const start25minSound = new Audio('FinPause.mp3');
 const pauseSound = new Audio('Pause.mp3');
 const endBreakSound = new Audio('FinPause.mp3');
 const endWorkSound = new Audio('FinTravail.mp3');
@@ -78,6 +78,7 @@ function togglePause() {
   if (isPaused) {
     // Resume timer
     isPaused = false;
+    start5minSound.play(); // Play start sound
     pauseButton.textContent = "Pause";
     startTimer();
   } else {
