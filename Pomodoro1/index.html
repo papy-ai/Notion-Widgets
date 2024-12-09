@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="widget">
+        <h1>Pomodoro Timer</h1>
+        <div class="timer-box">
+          <p id="timer">on bosse ?</p>
+        </div>
+        <div class="controls">
+          <button onclick="startSession(25)">Session (25 min)</button>
+          <button onclick="startSession(5)">Break (5 min)</button>
+          <button id="pauseButton" onclick="togglePause()">Pause</button>
+          <button onclick="resetTimer()">Reset</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
