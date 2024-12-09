@@ -17,7 +17,7 @@ function updateTimerDisplay() {
     const seconds = (timeLeft % 60).toString().padStart(2, '0');
     timerElement.textContent = `${minutes}:${seconds}`;
   } else {
-    timerElement.textContent = "on bosse ?";
+    timerElement.textContent = "On bosse ?";
   }
 }
 
